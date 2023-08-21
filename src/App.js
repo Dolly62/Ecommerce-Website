@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
+import CardItems from "./components/Card/CardItems";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar bg="dark" expand="sm" variant="dark">
+        <Container>
+          <Navbar.Brand href="/">Ecommerce Website</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
+            <Nav>
+              <Nav.Item>
+                <Nav.Link href="#home">Home</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="#store">Store</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="#about">About</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+          <Navbar.Collapse className="justify-content-end">
+            <Button >Cart0</Button>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <CardItems />
+    </>
   );
 }
 
