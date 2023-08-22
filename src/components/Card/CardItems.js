@@ -30,10 +30,10 @@ const CardItems = () => {
   ];
   return (
     <>
-      <Container className="text-center">
-        <Row>
+      <Container className="justify-content-center" style={{ width: "50rem"}}>
+        <Row className="m-4 text-center">
           {productsArr.map((product, index) => (
-            <Col lg={6} md={6} xs={12} key={index}>
+            <Col lg={6} md={6} xs={12} key={index} className="mb-4">
               <Card style={{ width: '18rem' }}>
                 <Card.Body>
                   <Card.Title>{product.title}</Card.Title>
