@@ -28,7 +28,7 @@ const Header = (props) => {
             </Nav>
           </Navbar.Collapse>
           <Navbar.Collapse className="justify-content-end">
-            <CartButton className="px-4 p-3" onClick={props.onShowCart} />
+            <CartButton onClick={props.onShowCart} />
           </Navbar.Collapse>
         </Container>
       </Navbar>
