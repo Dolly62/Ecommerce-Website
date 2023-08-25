@@ -1,0 +1,26 @@
+.container {
+  width: 50rem;
+  margin: 0 auto;
+  padding-top: 2px;
+  display: grid;
+  flex-direction: column;
+}
+
+.container h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.container p{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.img{
+    width: 15rem;
+    height: 15rem;
+    margin: 20px 15px;
+}

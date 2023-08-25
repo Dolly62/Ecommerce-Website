@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import CartButton from "./CartButton";
+import { NavLink } from "react-router-dom";
+import classes from "./Header.module.css";
 
 const Header = (props) => {
   return (
@@ -15,15 +17,30 @@ const Header = (props) => {
             id="basic-navbar-nav"
             className="justify-content-center"
           >
-            <Nav>
+            <Nav className={classes.navbar}>
               <Nav.Item className="p-2 mx-5" style={{ fontSize: "1.6rem" }}>
-                <Nav.Link href="#home">Home</Nav.Link>
+                <NavLink
+                  to="/home"
+                  className={(isActive) => (isActive ? classes.active : "")}
+                >
+                  Home
+                </NavLink>
               </Nav.Item>
               <Nav.Item className="p-2 mx-5" style={{ fontSize: "1.6rem" }}>
-                <Nav.Link href="#store">Store</Nav.Link>
+                <NavLink
+                  to="/store"
+                  className={(isActive) => (isActive ? classes.active : "")}
+                >
+                  Store
+                </NavLink>
               </Nav.Item>
               <Nav.Item className="p-2 mx-5" style={{ fontSize: "1.6rem" }}>
-                <Nav.Link href="#about">About</Nav.Link>
+                <NavLink
+                  to="/about"
+                  className={(isActive) => (isActive ? classes.active : "")}
+                >
+                  About
+                </NavLink>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>

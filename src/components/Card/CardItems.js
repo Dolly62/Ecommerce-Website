@@ -6,7 +6,7 @@ import albumthree from "../img/albumthree.png";
 import albumfour from "../img/albumfour.png";
 import CartBtn from "./CartBtn";
 import AddCartBtn from "./AddCartBtn";
-import CartContext from "../../store/cart-context";
+import CartContext from "./../../store/cart-context";
 
 const CardItems = (props) => {
   const cartCtx = useContext(CartContext);

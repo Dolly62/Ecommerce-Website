@@ -1,0 +1,9 @@
+.navbar a {
+    text-decoration: none;
+    color: rgb(204, 202, 202);
+}
+
+.navbar a.active{
+    color: white;
+    /* text-decoration: underline; */
+}
