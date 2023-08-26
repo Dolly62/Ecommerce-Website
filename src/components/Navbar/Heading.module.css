@@ -1,0 +1,12 @@
+.container{
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+    background: grey;
+    height: 20rem;
+}
+
+.heading {
+  font-size: 5rem;
+  font-weight: bold;
+}

@@ -1,0 +1,28 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 12rem;
+}
+.head {
+  border: 2px solid purple;
+  background: none;
+  width: 18rem;
+  height: 4rem;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.playButton {
+  border: 2px solid purple;
+  border-radius: 150px;
+  background: none;
+  width: 5rem;
+  height: 5rem;
+}
+.playButton span {
+  font-size: 2.8rem;
+  color: purple;
+}

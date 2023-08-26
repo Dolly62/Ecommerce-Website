@@ -6,6 +6,8 @@ import CartItem from "./components/Cart/CartItem";
 import Footer from "./components/Footer/Footer";
 import CartProvider from "./store/CartProvider";
 import About from "./components/About/About";
+import Heading from "./components/Navbar/Heading";
+import Home from "./components/Home/Home";
 
 
 function App() {
@@ -24,7 +26,9 @@ function App() {
     <CartProvider>
       {cartItemShown && <CartItem onHideCart={hideCartItemHandler} />}
       <Header onShowCart={showCartItemHandler} />
+      <Heading/>
         <Routes>
+          <Route path="/home" element={<Home/>}/>
           <Route path="/store" element={<CardItems onShowCart={showCartItemHandler} />}/>
           <Route path="/about" element={<About/>}/>
         </Routes>
