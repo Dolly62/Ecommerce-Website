@@ -26,6 +26,16 @@ const Home = () => {
       name: "PHOENIX, AZ",
       address: "AK-CHIN PAVILION",
     },
+    {
+      date: "AUG 2",
+      name: "LAS VEGAS, NV",
+      address: "T-MOBILE ARENA",
+    },
+    {
+      date: "AUG 7",
+      name: "CONCORD, CA",
+      address: "CONCORD PAVILION",
+    }
   ];
   return (
     <Fragment>
