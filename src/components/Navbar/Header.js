@@ -21,7 +21,7 @@ const Header = (props) => {
               <Nav.Item className="p-2 mx-5" style={{ fontSize: "1.6rem" }}>
                 <NavLink
                   to="/home"
-                  className={(isActive) => (isActive ? classes.active : "")}
+                  activeClassName={classes.active}
                 >
                   Home
                 </NavLink>
@@ -29,7 +29,7 @@ const Header = (props) => {
               <Nav.Item className="p-2 mx-5" style={{ fontSize: "1.6rem" }}>
                 <NavLink
                   to="/store"
-                  className={(isActive) => (isActive ? classes.active : "")}
+                  activeClassName={classes.active}
                 >
                   Store
                 </NavLink>
@@ -37,9 +37,17 @@ const Header = (props) => {
               <Nav.Item className="p-2 mx-5" style={{ fontSize: "1.6rem" }}>
                 <NavLink
                   to="/about"
-                  className={(isActive) => (isActive ? classes.active : "")}
+                  activeClassName={classes.active}
                 >
                   About
+                </NavLink>
+              </Nav.Item>
+              <Nav.Item className="p-2 mx-5" style={{ fontSize: "1.6rem" }}>
+                <NavLink
+                  to="/contactUs"
+                  activeClassName={classes.active}
+                >
+                  Contact Us
                 </NavLink>
               </Nav.Item>
             </Nav>

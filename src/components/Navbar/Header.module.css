@@ -2,8 +2,9 @@
     text-decoration: none;
     color: rgb(204, 202, 202);
 }
-
+.navbar a:hover,
+.navbar a:active,
 .navbar a.active{
-    color: white;
+    color: purple;
     /* text-decoration: underline; */
 }
