@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classes from "./ContactUs.module.css";
 
 const ContactUs = (props) => {
   const [name, setName] = useState("");
@@ -26,15 +27,16 @@ const ContactUs = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <label htmlFor="name">Name:</label>
-      <input type="text" id="name" value={name} onChange={nameHandler} />
+      <input type="text" id="name" value={name} onChange={nameHandler} required />
       <label htmlFor="emailid">Email Id:</label>
       <input
         type="text"
         id="emailid"
         value={emailId}
         onChange={emailIdHandler}
+        required
       />
       <label htmlFor="phoneno">Phone Number:</label>
       <input
@@ -42,6 +44,7 @@ const ContactUs = (props) => {
         id="phoneno"
         value={phno}
         onChange={phoneNumberHandler}
+        required
       />
       <button type="submit">Submit</button>
     </form>

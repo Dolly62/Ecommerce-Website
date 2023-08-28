@@ -10,7 +10,7 @@ const CartButton = (props) => {
     <Button
       className=" px-4 p-3"
       style={{
-        backgroundColor: "blueviolet",
+        backgroundColor: "purple",
         border: "none",
         fontSize: "1.1rem",
       }}

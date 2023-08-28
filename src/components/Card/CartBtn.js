@@ -5,7 +5,7 @@ const CartBtn = (props) => {
   return (
     <Row className="text-center">
     <Col>
-    <Button style={{ backgroundColor: "blueviolet", border: "none", fontSize: "1.1rem" }} className='mb-3 p-3' onClick={props.onClick}>
+    <Button style={{ backgroundColor: "purple", border: "none", fontSize: "1.1rem" }} className='mb-3 p-3' onClick={props.onClick}>
       See the cart
     </Button>
     </Col>

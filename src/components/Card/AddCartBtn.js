@@ -8,7 +8,7 @@ const AddCartBtn = (props) => {
 
   return (
     <Button
-      style={{ backgroundColor: "blueviolet", border: "none" }}
+      style={{ backgroundColor: "purple", border: "none" }}
       onClick={onAddingItem}
     >
       Add to cart

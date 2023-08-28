@@ -17,7 +17,7 @@ const Cart = (props) => {
       <td>{props.price}</td>
       <td>{props.quantity}</td>
       <td>
-        <Button onClick={props.onRemove}>Remove</Button>
+        <Button onClick={props.onRemove} style={{ backgroundColor: "purple", border: "none", fontSize: "1.1rem" }}>Remove</Button>
       </td>
     </tr>
   );

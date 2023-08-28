@@ -7,7 +7,7 @@ import youtube from "../img/youtube.jpg";
 const Footer = () => {
   return (
     <Fragment>
-      <Navbar style={{ backgroundColor: "blueviolet" }} variant="dark">
+      <Navbar style={{ backgroundColor: "purple" }} variant="dark">
         <Container>
           <Navbar.Brand
             href="/"
