@@ -39,3 +39,6 @@
     color: white;
     height: 6vh;
 }
+.form button:hover{
+    background-color: rgb(148, 45, 148);
+}

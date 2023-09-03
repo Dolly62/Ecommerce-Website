@@ -1,17 +1,17 @@
 import React, { useContext, useRef, useState } from "react";
-import classes from "./Login.module.css";
+import classes from "../ContactUs/ContactUs.module.css";
 import AuthContext from "../../store/Auth-context";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
-    const history = useHistory();
+  const history = useHistory();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [isLogin, setIsLogin] = useState(true);
 
   const authCtx = useContext(AuthContext);
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
@@ -21,35 +21,34 @@ const Login = () => {
     if (isLogin) {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCooNjCeiqrD-SUyUCID7M32eTRmyzFaV8";
-    } else{
-        url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCooNjCeiqrD-SUyUCID7M32eTRmyzFaV8";
+    } else {
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCooNjCeiqrD-SUyUCID7M32eTRmyzFaV8";
     }
-    fetch(url, {
-        method: 'POST',
+    try {
+      const response = await fetch(url, {
+        method: "POST",
         body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            returnSecureToken: true,
+          email: enteredEmail,
+          password: enteredPassword,
+          returnSecureToken: true,
         }),
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
-    }).then((res) => {
-        if(res.ok){
-            return res.json();
-        } else{
-            return res.json().then((data) => {
-                let errMsg = "Authentication Failed";
-                throw new Error(errMsg);
-            })
-        }
-    }).then((data) => {
-        console.log(data);
-        authCtx.login(data.idToken);
-        history.replace('/store')
-    }).catch((err) => {
-        alert(err.message);
-    })
+      });
+      if (!response.ok) {
+        const data = await response.json();
+        let errMsg = "Authentication Failed";
+        throw new Error(errMsg);
+      }
+      const data = await response.json();
+      console.log(data);
+      authCtx.login(data.idToken);
+      history.replace("/store");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
