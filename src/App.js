@@ -10,6 +10,7 @@ import Heading from "./components/Navbar/Heading";
 import Home from "./components/Home/Home";
 import ContactUs from "./components/ContactUs/ContactUs";
 import ProductDetails from "./components/Card/ProductDetails";
+import Login from "./components/Auth/Login";
 
 function App() {
   const [cartItemShown, setCartItemShown] = useState(false);
@@ -56,6 +57,9 @@ function App() {
         </Route>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/login">
+          <Login/>
         </Route>
         <Route path="/contactUs">
           <ContactUs onAddContact={addInputHandler} />

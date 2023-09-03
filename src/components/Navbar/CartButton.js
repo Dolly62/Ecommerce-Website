@@ -8,7 +8,7 @@ const CartButton = (props) => {
   // console.log(cartCtx.items);
   return (
     <Button
-      className=" px-4 p-3"
+      className=" px-3 p-2"
       style={{
         backgroundColor: "purple",
         border: "none",

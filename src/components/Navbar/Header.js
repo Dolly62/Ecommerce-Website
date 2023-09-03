@@ -9,7 +9,7 @@ const Header = (props) => {
     <Fragment>
       <Navbar className={classes.navmain} bg="dark" expand="sm" variant="dark">
         <Container>
-          <Navbar.Brand href="/" style={{ fontSize: "1.8rem" }}>
+          <Navbar.Brand href="/" style={{ fontSize: "1.6rem", fontWeight: "bolder" }}>
             Ecommerce Website
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -18,7 +18,7 @@ const Header = (props) => {
             className="justify-content-center"
           >
             <Nav className={classes.navbar}>
-              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.6rem", width: "10rem" }}>
+              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.3rem", width: "8rem", fontWeight: "bold" }}>
                 <NavLink
                   to="/home"
                   activeClassName={classes.active}
@@ -26,7 +26,7 @@ const Header = (props) => {
                   Home
                 </NavLink>
               </Nav.Item>
-              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.6rem", width: "10rem"  }}>
+              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.3rem", width: "8rem", fontWeight: "bold"  }}>
                 <NavLink
                   to="/store"
                   activeClassName={classes.active}
@@ -34,7 +34,7 @@ const Header = (props) => {
                   Store
                 </NavLink>
               </Nav.Item>
-              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.6rem", width: "10rem"  }}>
+              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.3rem", width: "8rem", fontWeight: "bold"  }}>
                 <NavLink
                   to="/about"
                   activeClassName={classes.active}
@@ -42,7 +42,15 @@ const Header = (props) => {
                   About
                 </NavLink>
               </Nav.Item>
-              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.6rem", width: "10rem"  }}>
+              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.3rem", width: "8rem", fontWeight: "bold"  }}>
+                <NavLink
+                  to="/login"
+                  activeClassName={classes.active}
+                >
+                  Login
+                </NavLink>
+              </Nav.Item>
+              <Nav.Item className="p-2 m-4 mx-2" style={{ fontSize: "1.3rem", width: "8rem", fontWeight: "bold" }}>
                 <NavLink
                   to="/contactUs"
                   activeClassName={classes.active}
