@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
-import classes from "../ContactUs/ContactUs.module.css";
 import AuthContext from "../../store/Auth-context";
 import { useHistory } from "react-router-dom";
+import classes from "./Login.module.css"
 
 const Login = () => {
   const history = useHistory();
@@ -10,6 +10,10 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   const authCtx = useContext(AuthContext);
+
+  const switchAuthModeHandler = () => {
+    setIsLogin((prevState) => !prevState);
+  };
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -43,8 +47,9 @@ const Login = () => {
         throw new Error(errMsg);
       }
       const data = await response.json();
-      console.log(data);
-      authCtx.login(data.idToken);
+      // console.log(data);
+      authCtx.login(data.idToken, data.email);
+
       history.replace("/store");
     } catch (error) {
       alert(error.message);
@@ -52,13 +57,23 @@ const Login = () => {
   };
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-      <label htmlFor="email">Your Email</label>
-      <input type="email" id="email" required ref={emailInputRef} />
-      <label htmlFor="password">Your Password</label>
-      <input type="password" id="password" required ref={passwordInputRef} />
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <form className={classes.form} onSubmit={submitHandler}>
+        <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+        <label htmlFor="email">Your Email</label>
+        <input type="email" id="email" required ref={emailInputRef} />
+        <label htmlFor="password">Your Password</label>
+        <input type="password" id="password" required ref={passwordInputRef} />
+        <button type="submit" className={classes.submitbtn}>{isLogin ? "Login" : "Create Account"}</button>
+        <button
+          type="button"
+          className={classes.btn}
+          onClick={switchAuthModeHandler}
+        >
+          {isLogin ? "Create new account" : "Login with existing account"}
+        </button>
+      </form>
+    </>
   );
 };
 

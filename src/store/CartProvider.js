@@ -13,10 +13,10 @@ const CartProvider = (props) => {
 
     if (existingItemIndex !== -1) {
       // console.log("exist")
-        alert("Item already exist")
-        return;
+      alert("Item already exist");
+      return;
     }
-    setCartItem((prevItems) => [...prevItems, itemm])
+    setCartItem((prevItems) => [...prevItems, itemm]);
     setTotalAmount((prevTotalAmount) => prevTotalAmount + itemm.price);
   };
 
@@ -27,9 +27,27 @@ const CartProvider = (props) => {
       setCartItem((prevItems) =>
         prevItems.filter((item) => item.id !== itemid)
       );
-    } 
-    setTotalAmount((prevTotalAmount) => prevTotalAmount - itemToRemove.price)
+    }
+    setTotalAmount((prevTotalAmount) => prevTotalAmount - itemToRemove.price);
   };
+
+  // const removeFromBackend = async (itemid) => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://crudcrud.com/api/2b4eeefdb5424708800176e82b4bd4ed/cart/${itemid}`,
+  //       {
+  //         method: "DELETE",
+  //       }
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Failed to remove an item");
+  //     }
+  //     removeItemToCartHandler(itemid);
+  //   } catch (error) {
+  //     alert(error.message);
+  //     console.log(error);
+  //   }
+  // };
 
   const cartContext = {
     items: cartItem,

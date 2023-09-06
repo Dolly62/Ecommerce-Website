@@ -18,15 +18,35 @@ function App() {
   const [cartItemShown, setCartItemShown] = useState(false);
   const authCtx = useContext(AuthContext);
 
+
   const isLoggedIn = authCtx.isLoggedIn;
+
+  // const fetchCartItems = async() => {
+  //   const userEmail = authCtx.userEmail.replace(/[@.]/g, "");
+  //   try {
+  //     const response = await fetch(`https://crudcrud.com/api/751d5f91f8684b40b79b90c215e6b6a7/cart${userEmail}`);
+
+  //     if(!response.ok) {
+  //       throw new Error("Failed to fetch")
+  //     }
+
+  //     const data = await response.json();
+  //     console.log(data);
+  //     cartCtx.addItem(data);
+  //   } catch(error) {
+  //     alert(error.message);
+  //   }
+  // }
 
   const showCartItemHandler = () => {
     setCartItemShown(true);
+    // fetchCartItems();
   };
 
   const hideCartItemHandler = () => {
     setCartItemShown(false);
   };
+
 
   async function addInputHandler(form) {
     const response = await fetch(
@@ -47,7 +67,7 @@ function App() {
 
   return (
     <CartProvider>
-      {cartItemShown && <CartItem onHideCart={hideCartItemHandler} />}
+      {cartItemShown && <CartItem onShowCart={showCartItemHandler} onHideCart={hideCartItemHandler} />}
       <Header onShowCart={showCartItemHandler} />
       <Heading />
       <Switch>

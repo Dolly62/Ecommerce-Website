@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 
 const AddCartBtn = (props) => {
   const onAddingItem = () => {
+    // console.log(props);
     props.onadditem(props.product);
   };
 

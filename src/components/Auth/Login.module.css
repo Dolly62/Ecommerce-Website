@@ -1,44 +1,57 @@
-/* .form{
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin: 60px auto;
-    border: none;
-    border-radius: 12px;
-    background: white;
-    padding: 30px;
-    box-shadow: 3px 3px 20px 1px rgb(226, 212, 226);
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 60px auto;
+  align-items: center;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  padding: 30px;
+  box-shadow: 3px 3px 20px 1px rgb(226, 212, 226);
 }
 
-.form label{
-    margin: 7px auto;
+.form h1{
     font-weight: bold;
-    font-size: 20px;
+    margin-bottom: 30px;
     color: black;
 }
 
-.form input{
-    margin: 4px auto;
-    width: 80%;
-    border: 2px solid grey;
-    border-radius: 13px;
-    font-weight: bolder;
-    color: rgb(38, 38, 38);
-    height: 6vh;
+.form label {
+  margin: 7px auto;
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
 }
 
-.form button{
-    margin: 30px auto;
-    width: 80%;
-    border: none;
-    background-color: purple;
-    border-radius: 13px;
-    font-size: 20px;
-    padding: 4px;
-    color: white;
-    height: 6vh;
+.form input {
+  margin: 4px auto;
+  width: 80%;
+  border: 1px solid purple;
+  border-radius: 13px;
+  font-weight: bolder;
+  color: rgb(150, 62, 150);
+  height: 6vh;
 }
 
-.form button:hover{
-    background-color: rgb(148, 45, 148);
-} */
+.submitbtn {
+  margin: 30px auto;
+  width: 80%;
+  border: none;
+  background-color: purple;
+  border-radius: 13px;
+  font-size: 20px;
+  padding: 4px;
+  color: white;
+  height: 6vh;
+}
+.submitbtn:hover {
+  background-color: rgb(148, 45, 148);
+}
+
+.btn {
+  border: none;
+  background: none;
+  color: purple;
+  font-size: 18px;
+}
