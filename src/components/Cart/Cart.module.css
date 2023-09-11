@@ -1,0 +1,11 @@
+.cartBtn{
+    background-color: purple;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    color: white;
+}
+.cartBtn:hover{
+    background-color: rgb(173, 36, 173);
+}

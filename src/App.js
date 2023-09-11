@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import CardItems from "./components/Card/CardItems";
 import Header from "./components/Navbar/Header";
@@ -13,30 +13,35 @@ import ProductDetails from "./components/Card/ProductDetails";
 import Login from "./components/Auth/Login";
 import AuthContext from "./store/Auth-context";
 import { Redirect } from "react-router-dom";
+import CartContext from "./store/cart-context";
 
 function App() {
   const [cartItemShown, setCartItemShown] = useState(false);
   const authCtx = useContext(AuthContext);
+  // const cartCtx = useContext(CartContext);
 
 
   const isLoggedIn = authCtx.isLoggedIn;
 
-  // const fetchCartItems = async() => {
-  //   const userEmail = authCtx.userEmail.replace(/[@.]/g, "");
-  //   try {
-  //     const response = await fetch(`https://crudcrud.com/api/751d5f91f8684b40b79b90c215e6b6a7/cart${userEmail}`);
-
-  //     if(!response.ok) {
-  //       throw new Error("Failed to fetch")
+  // useEffect(() => {
+  //   const fetchCartItems = async() => {
+  //     const userEmail = authCtx.userEmail.replace(/[@.]/g, "");
+  //     try {
+  //       const response = await fetch(`https://crudcrud.com/api/8099f018d7d04edcb08f63350a594aca/cart${userEmail}`);
+  
+  //       if(!response.ok) {
+  //         throw new Error("Failed to fetch")
+  //       }
+  
+  //       const data = await response.json();
+  //       console.log(data);
+  //       cartCtx.addItem(data);
+  //     } catch(error) {
+  //       alert(error.message);
   //     }
-
-  //     const data = await response.json();
-  //     console.log(data);
-  //     cartCtx.addItem(data);
-  //   } catch(error) {
-  //     alert(error.message);
   //   }
-  // }
+  //   fetchCartItems();
+  // }, [authCtx.userEmail, cartCtx])
 
   const showCartItemHandler = () => {
     setCartItemShown(true);

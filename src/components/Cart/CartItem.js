@@ -12,7 +12,7 @@ import AuthContext from "../../store/Auth-context";
 const CartItem = (props) => {
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
-  const [cartData, setCartData] = useState([]);
+  // const [cartData, setCartData] = useState([]);
 
   const totalAmount = cartCtx.items.reduce((total, item) => {
     return total + item.price * item.quantity;
@@ -26,57 +26,56 @@ const CartItem = (props) => {
     cartCtx.removeItem(itemid);
   };
 
-  const fetchData = async () => {
-    const userEmail = authCtx.userEmail.replace(/[@.]/g, "");
-
-    try {
-      const response = await fetch(
-        `https://crudcrud.com/api/8099f018d7d04edcb08f63350a594aca/cart${userEmail}`
-      );
-      console.log(response.status);
-      console.log(response);
-
-      if (!response.ok) {
-        throw new Error("Failed to get");
-      }
-
-      const data = await response.json();
-      console.log(data);
-      setCartData(data)
-      // cartCtx.setCartItem(data.items)
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
-    }
-  };
+  // const fetchData = async () => {
+    
   
+  //   const userEmail = authCtx.userEmail.replace(/[@.]/g, "");
 
-  useEffect(() => {
-    if (props.onShowCart ) {
-      fetchData();
-    }
-  }, [props.onShowCart]);
+  //   try {
+  //     const response = await fetch(
+  //       `https://crudcrud.com/api/05c33d4ab6174bdcab8fe28101e77684/cart${userEmail}`
+  //     );
+  //     // console.log(response.status);
+  //     // console.log(response);
 
-  // const cartElements = [
-  //   {
-  //     title: "Colors",
-  //     price: 100,
-  //     imageUrl: albumone,
-  //     quantity: 2,
-  //   },
-  //   {
-  //     title: "Black and white Colors",
-  //     price: 50,
-  //     imageUrl: albumtwo,
-  //     quantity: 3,
-  //   },
-  //   {
-  //     title: "Yellow and Black Colors",
-  //     price: 70,
-  //     imageUrl: albumthree,
-  //     quantity: 1,
-  //   },
-  // ];
+  //     if (!response.ok) {
+  //       throw new Error("Failed to get");
+  //     }
+
+  //     const data = await response.json();
+  //     // const filteredData = data.filter((item) => {
+  //     //   return !cartCtx.items.some((cartItem) => cartItem._id === item._id);
+  //     // });
+  //     console.log(data);
+  //     // setCartData(data);
+  //     data.forEach((item) => {
+  //       cartCtx.addItem({
+  //         id: item.id,
+  //         title: item.title,
+  //         quantity: item.quantity,
+  //         price: item.price,
+  //         imageUrl: item.imageUrl,
+  //       });
+  //     });
+
+  //     // cartCtx.addItem({
+  //     //   id: data.id,
+  //     //   title: data.title,
+  //     //   quantity: data.quantity,
+  //     //   price: data.price,
+  //     //   imageUrl: data.imageUrl,
+  //     // })
+  //   } catch (error) {
+  //     console.log(error);
+  //     alert(error.message);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   // if (props.onShowCart) {
+  //   fetchData();
+  //   // }
+  // }, []);
 
   return (
     <Modal onHideCart={props.onHideCart}>
@@ -95,15 +94,16 @@ const CartItem = (props) => {
           </tr>
         </thead>
         <tbody>
-          {cartData && cartData.length > 0 ? (
-            cartData.map((itemm) => (
+          {cartCtx.items && cartCtx.items.length > 0 ? (
+            cartCtx.items.map((cartItem) => (
               <Cart
-                key={itemm.id}
-                title={itemm.title}
-                quantity={itemm.quantity}
-                imageUrl={itemm.imageUrl}
-                onAdd={cartItemAddHandler.bind(null, itemm)}
-                onRemove={cartItemRemoveHandler.bind(null, itemm.id)}
+                key={cartItem.id}
+                title={cartItem.title}
+                quantity={cartItem.quantity}
+                price={cartItem.price}
+                imageUrl={cartItem.imageUrl}
+                onAdd={cartItemAddHandler.bind(null, cartItem)}
+                onRemove={cartItemRemoveHandler.bind(null, cartItem.id)}
               />
             ))
           ) : (
