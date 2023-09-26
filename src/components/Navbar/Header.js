@@ -27,7 +27,7 @@ const Header = (props) => {
             className="justify-content-center"
           >
             <Nav className={classes.navbar}>
-              <Nav.Item
+              {isLoggedIn && (<Nav.Item
                 className="p-2 m-4 mx-2"
                 style={{
                   fontSize: "1.3rem",
@@ -38,8 +38,8 @@ const Header = (props) => {
                 <NavLink to="/home" activeClassName={classes.active}>
                   Home
                 </NavLink>
-              </Nav.Item>
-              <Nav.Item
+              </Nav.Item>)}
+              {isLoggedIn && (<Nav.Item
                 className="p-2 m-4 mx-2"
                 style={{
                   fontSize: "1.3rem",
@@ -50,7 +50,7 @@ const Header = (props) => {
                 <NavLink to="/store" activeClassName={classes.active}>
                   Store
                 </NavLink>
-              </Nav.Item>
+              </Nav.Item>)}
               <Nav.Item
                 className="p-2 m-4 mx-2"
                 style={{
@@ -110,7 +110,7 @@ const Header = (props) => {
             </Nav>
           </Navbar.Collapse>
           <Navbar.Collapse className="justify-content-end">
-            <CartButton onClick={props.onShowCart} />
+            {isLoggedIn && (<CartButton onClick={props.onShowCart} />)}
           </Navbar.Collapse>
         </Container>
       </Navbar>

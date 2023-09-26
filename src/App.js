@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import CardItems from "./components/Card/CardItems";
 import Header from "./components/Navbar/Header";
-import CartItem from "./components/Cart/CartItem";
+// import CartItem from "./components/Cart/CartItem";
 import Footer from "./components/Footer/Footer";
 import CartProvider from "./store/CartProvider";
 import About from "./components/About/About";
@@ -13,45 +13,23 @@ import ProductDetails from "./components/Card/ProductDetails";
 import Login from "./components/Auth/Login";
 import AuthContext from "./store/Auth-context";
 import { Redirect } from "react-router-dom";
-import CartContext from "./store/cart-context";
 
 function App() {
   const [cartItemShown, setCartItemShown] = useState(false);
   const authCtx = useContext(AuthContext);
-  // const cartCtx = useContext(CartContext);
-
 
   const isLoggedIn = authCtx.isLoggedIn;
 
-  // useEffect(() => {
-  //   const fetchCartItems = async() => {
-  //     const userEmail = authCtx.userEmail.replace(/[@.]/g, "");
-  //     try {
-  //       const response = await fetch(`https://crudcrud.com/api/8099f018d7d04edcb08f63350a594aca/cart${userEmail}`);
-  
-  //       if(!response.ok) {
-  //         throw new Error("Failed to fetch")
-  //       }
-  
-  //       const data = await response.json();
-  //       console.log(data);
-  //       cartCtx.addItem(data);
-  //     } catch(error) {
-  //       alert(error.message);
-  //     }
-  //   }
-  //   fetchCartItems();
-  // }, [authCtx.userEmail, cartCtx])
+  const CartItem = React.lazy(() => import("./components/Cart/CartItem"));
+const CardItems = React.lazy(() => import("./components/Card/CardItems"));
 
   const showCartItemHandler = () => {
     setCartItemShown(true);
-    // fetchCartItems();
   };
 
   const hideCartItemHandler = () => {
     setCartItemShown(false);
   };
-
 
   async function addInputHandler(form) {
     const response = await fetch(
@@ -68,11 +46,12 @@ function App() {
     const data = await response.json();
     console.log(data);
   }
-  
 
   return (
     <CartProvider>
-      {cartItemShown && <CartItem onShowCart={showCartItemHandler} onHideCart={hideCartItemHandler} />}
+      <React.Suspense fallback={<div>Loading...</div>}>
+        {cartItemShown && <CartItem onHideCart={hideCartItemHandler} />}
+      </React.Suspense>
       <Header onShowCart={showCartItemHandler} />
       <Heading />
       <Switch>
@@ -80,17 +59,20 @@ function App() {
           <Home />
         </Route>
         <Route path="/store" exact>
-          {isLoggedIn && (<CardItems onShowCart={showCartItemHandler} />)}
-          {!isLoggedIn && <Redirect to='/login'/>}
+          <React.Suspense fallback={<div>Loading...</div>} >
+          {isLoggedIn && <CardItems onShowCart={showCartItemHandler} />}
+          </React.Suspense>
+          {!isLoggedIn && <Redirect to="/login" />}
         </Route>
         <Route path="/store/:productId">
-          <ProductDetails />
+          {isLoggedIn && <ProductDetails />}
+          {!isLoggedIn && <Redirect to="/login" />}
         </Route>
         <Route path="/about">
           <About />
         </Route>
         <Route path="/login">
-          <Login/>
+          <Login />
         </Route>
         <Route path="/contactUs">
           <ContactUs onAddContact={addInputHandler} />

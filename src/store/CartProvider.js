@@ -7,29 +7,6 @@ const CartProvider = (props) => {
   const [totalAmount, setTotalAmount] = useState(0);
   const authCtx = useContext(AuthContext);
 
-
-  // const addItemToCartHandler = (itemm) => {
-  //   // console.log(itemm);
-  //   // console.log(cartItem);
-  //   const existingItemIndex = cartItem.findIndex(
-  //     (item) => item.id === itemm.id
-  //   );
-  //   // console.log(existingItemIndex);
-
-  //   if (existingItemIndex !== -1) {
-  //     // console.log("exist")
-  //     // alert("Item already exist");
-  //     // return;
-  //     const updatedCartItems = [...cartItem];
-  //     updatedCartItems[existingItemIndex].quantity += 1;
-  //     setCartItem(updatedCartItems);
-  //   } else {
-  //     setCartItem((prevItems) => [...prevItems, itemm]);
-  //   }
-
-  //   setTotalAmount((prevTotalAmount) => prevTotalAmount + itemm.price);
-  // };
-
   const addItemToCartHandler = async (product) => {
     const userEmail = authCtx.userEmail.replace(/[@.]/g, "");
 
@@ -39,7 +16,7 @@ const CartProvider = (props) => {
       if (existingCartItem) {
         console.log(existingCartItem._id);
         const response = await fetch(
-          `https://crudcrud.com/api/745625253ad94e659eb1d2ae954b144a/cart${userEmail}/${existingCartItem._id}`,
+          `https://crudcrud.com/api/a45986541acc4f57a474569765be407f/cart${userEmail}/${existingCartItem._id}`,
           {
             method: "PUT",
             body: JSON.stringify({
@@ -69,7 +46,7 @@ const CartProvider = (props) => {
         );
       } else {
         const response = await fetch(
-          `https://crudcrud.com/api/745625253ad94e659eb1d2ae954b144a/cart${userEmail}`,
+          `https://crudcrud.com/api/a45986541acc4f57a474569765be407f/cart${userEmail}`,
           {
             method: "POST",
             body: JSON.stringify({
@@ -103,7 +80,7 @@ const CartProvider = (props) => {
 
     try {
       const response = await fetch(
-        `https://crudcrud.com/api/745625253ad94e659eb1d2ae954b144a/cart${userEmail}`
+        `https://crudcrud.com/api/a45986541acc4f57a474569765be407f/cart${userEmail}`
       );
 
       if (!response.ok) {
@@ -123,23 +100,6 @@ const CartProvider = (props) => {
     }
   }, [authCtx.isLoggedIn]);
 
-  // const removeItemToCartHandler = (itemid) => {
-  //   const itemToRemove = cartItem.find((item) => item.id === itemid);
-
-  //   if (itemToRemove.quantity === 1) {
-  //     setCartItem((prevItems) =>
-  //       prevItems.filter((item) => item.id !== itemid)
-  //     );
-  //   } else {
-  //     setCartItem((prevItems) =>
-  //       prevItems.map((item) =>
-  //         item.id === itemid ? { ...item, quantity: item.quantity - 1 } : item
-  //       )
-  //     );
-  //   }
-  //   setTotalAmount((prevTotalAmount) => prevTotalAmount - itemToRemove.price);
-  // };
-
   const removeItemToCartHandler = async (itemid) => {
     const userEmail = authCtx.userEmail.replace(/[@.]/g, "");
     const itemToRemove = cartItem.find((item) => item.id === itemid);
@@ -151,7 +111,7 @@ const CartProvider = (props) => {
     try {
       if (itemToRemove.quantity === 1) {
         const response = await fetch(
-          `https://crudcrud.com/api/745625253ad94e659eb1d2ae954b144a/cart${userEmail}/${itemToRemove._id}`,
+          `https://crudcrud.com/api/a45986541acc4f57a474569765be407f/cart${userEmail}/${itemToRemove._id}`,
           {
             method: "DELETE",
           }
@@ -166,7 +126,7 @@ const CartProvider = (props) => {
         );
       } else {
         const response = await fetch(
-          `https://crudcrud.com/api/745625253ad94e659eb1d2ae954b144a/cart${userEmail}/${itemToRemove._id}`,
+          `https://crudcrud.com/api/a45986541acc4f57a474569765be407f/cart${userEmail}/${itemToRemove._id}`,
           {
             method: "PUT",
             body: JSON.stringify({

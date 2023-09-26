@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import CartContext from "../../store/cart-context";
-import { useState } from "react";
 
 const CartButton = (props) => {
   const cartCtx = useContext(CartContext);
   // const [count, setCount] = useState(0);
-// console.log(count);
+  // console.log(count);
 
   // console.log(cartCtx.items);
   // useEffect(() => {
@@ -33,7 +32,7 @@ const CartButton = (props) => {
       onClick={props.onClick}
     >
       <span>Cart</span>
-      <span>{cartCtx.items.length}</span>
+      <span>{cartCtx.items?.length || 0}</span>
     </Button>
   );
 };
